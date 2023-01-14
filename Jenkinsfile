@@ -13,28 +13,28 @@ pipeline{
 		stage('gitclone') {
 
 		      steps {
-		         git 'https://github.com/adeoyedewale/Jeff.git'
+		         git 'https://github.com/febfun1/Jeff.git'
 		      }
 		}
 		
 		stage('Build') {
 			steps {
 			
-			   sh 'docker build -t eruobodo/class_app:${BUILD_NUMBER} .'
+			   sh 'docker build -t febfun/class_app:${BUILD_NUMBER} .'
 			}
 		}
 		
 		stage('Login') {
 		
 			steps {
-			   sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login --username eruobodo --password-stdin'    
+			   sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login --username febfun --password-stdin'    
 			}
 		}
 
 		stage('Push') {
 			
 			steps {
-			   sh 'docker push eruobodo/class_app:${BUILD_NUMBER}'
+			   sh 'docker push febfun/class_app:${BUILD_NUMBER}'
 			}
 		}
 		}
